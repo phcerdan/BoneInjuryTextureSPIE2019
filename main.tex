@@ -5,7 +5,7 @@
 % Add an empty note to every slide
 % https://tex.stackexchange.com/questions/11708/run-macro-on-each-frame-in-beamer
 % \setbeameroption{hide notes} % Only slides (default)
-\setbeameroption{show only notes} % Only notes
+% \setbeameroption{show only notes} % Only notes
 % \setbeameroption{show notes on second screen=right} % Both
 \makeatletter
 \def\beamer@framenotesbegin{% at beginning of slide
@@ -198,7 +198,7 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
     \begin{itemize}
       \item FOV: 40 x 40 mm
       \item high resolution scanning mode
-      \item 90 kV, 5 mA, 30.8 s, 125 $\mu$m voxel size, effective dose 114 μSv.
+      \item 90 kV, 5 mA, 30.8 s, 125 $\mu$m voxel size, effective dose 114 $\mu$Sv.
     \end{itemize}
   }
 \end{frame}
@@ -254,26 +254,35 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
 \begin{frame}{Texture Analysis: Co-occurrence Matrix (GLCM)}
   \begin{columns}[onlytextwidth]
     \column{0.6\textwidth}
-    Eight co-occurrence based-features:
+    Eight co-occurrence based-features:\\
     \begin{itemize} \itemsep0.5em
       \item Energy
-      \item Entropy
-      \item Correlation
-      \item Inverse Difference Moment (IDM)
-      \item Contrast
+      \item \textbf{a}) Entropy
+      \item \textbf{b}) Correlation
+      \item \textbf{c}) Inverse Difference Moment (IDM)
+      \item \textbf{d}) Inertia
       \item Cluster shade
       \item Cluster prominence
-      \item Haralick’s correlation
+      \item \textbf{e}) Haralick’s correlation
     \end{itemize}
     \column{0.4\textwidth}
     \begin{columns}
-    \centering
-    \column{0.5\textwidth}
-    \centering
-    A B
-    \column{0.5\textwidth}
-    \centering
-    C D
+      \centering
+      \column{0.5\textwidth}
+      \centering
+      % \xincludegraphics[width=0.8\textwidth, label=a, labelbox]{./TextureMapsImages/GLCM_46_left_0_energy.png}\\
+      \xincludegraphics[width=0.8\textwidth]{./TextureMapsImages/GLCM_46_left_grayscale.png}\\
+      \vspace{0.3mm}
+      \xincludegraphics[width=0.8\textwidth, label=b, labelbox]{./TextureMapsImages/GLCM_46_left_2_correlation.png}\\
+      \vspace{0.3mm}
+      \xincludegraphics[width=0.8\textwidth, label=d, labelbox]{./TextureMapsImages/GLCM_46_left_4_inertia.png}
+      \column{0.5\textwidth}
+      \centering
+      \xincludegraphics[width=0.8\textwidth, label=a, labelbox]{./TextureMapsImages/GLCM_46_left_1_entropy.png}\\
+      \vspace{0.3mm}
+      \xincludegraphics[width=0.8\textwidth, label=c, labelbox]{./TextureMapsImages/GLCM_46_left_3_inverseDifference.png}\\
+      \vspace{0.3mm}
+      \xincludegraphics[width=0.8\textwidth, label=e, labelbox]{./TextureMapsImages/GLCM_46_left_7_haralicCorrelation.png}
     \end{columns}
   \end{columns}
 \end{frame}
@@ -287,7 +296,7 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
        \item \textbf{b}) Long run emphasis (LRE) 
        \item \textbf{c}) Grey level non-uniformity (GLN) 
        \item \textbf{d}) Run length non-uniformity (RLN) 
-       \item Low grey level run emphasis (LGRE)
+       \item \textbf{e}) Low grey level run emphasis (LGRE)
        \item High grey level run emphasis (HGRE)
        \item Short run low grey level emphasis (SRLGE)
        \item Short run high grey level emphasis (SRHGE)
@@ -296,15 +305,21 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
     \end{itemize}
     \column{0.4\textwidth}
     \begin{columns}
-    \centering
-    \column{0.5\textwidth}
-    \centering
-    \xincludegraphics[width=0.9\textwidth, label=a, labelbox]{./TextureMapsImages/GLRLM_46_LEFT_0_crop.png}\\
-    \xincludegraphics[width=0.9\textwidth, label=c, labelbox]{./TextureMapsImages/GLRLM_46_LEFT_2_crop.png}
-    \column{0.5\textwidth}
-    \centering
-    \xincludegraphics[width=0.9\textwidth, label=b, labelbox]{./TextureMapsImages/GLRLM_46_LEFT_1_crop.png}\\
-    \xincludegraphics[width=0.9\textwidth, label=d, labelbox]{./TextureMapsImages/GLRLM_46_LEFT_3_crop.png}
+      \centering
+      \column{0.5\textwidth}
+      \centering
+      \xincludegraphics[width=0.9\textwidth]{./TextureMapsImages/GLRLM_46_left_grayscale.png}\\
+      \vspace{0.3mm}
+      \xincludegraphics[width=0.9\textwidth, label=b, labelbox]{./TextureMapsImages/GLRLM_46_LEFT_1_crop.png}\\
+      \vspace{0.3mm}
+      \xincludegraphics[width=0.9\textwidth, label=d, labelbox]{./TextureMapsImages/GLRLM_46_LEFT_3_crop.png}
+      \column{0.5\textwidth}
+      \centering
+      \xincludegraphics[width=0.9\textwidth, label=a, labelbox]{./TextureMapsImages/GLRLM_46_LEFT_0_crop.png}\\
+      \vspace{0.3mm}
+      \xincludegraphics[width=0.9\textwidth, label=c, labelbox]{./TextureMapsImages/GLRLM_46_LEFT_2_crop.png}\\
+      \vspace{0.3mm}
+      \xincludegraphics[width=0.9\textwidth, label=e, labelbox]{./TextureMapsImages/GLRLM_46_LEFT_4_crop.png}
     \end{columns}
   \end{columns}
 \end{frame}
@@ -313,26 +328,32 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
 
   \begin{columns}[onlytextwidth]
     \column{0.6\textwidth}
-    Bone morphometry features describe the 3D shape of subchondral bone trabecular structure
+    Bone morphometry features describe the 3D shape of subchondral bone trabecular structure.\\
     Five bone morphometry features:
     \begin{itemize} \itemsep0.5em
       \item \textbf{a}) Bone volume density (Bv/Tv)
       \item \textbf{b}) Bone surface density (Bs/Bv)
       \item \textbf{c}) Trabecular thickness (Tb.Th)
       \item \textbf{d}) Trabecular separation (Tb.Sp)
-      \item Trabecular number (Tb.N)
+      \item \textbf{e}) Trabecular number (Tb.N)
     \end{itemize}
     \column{0.4\textwidth}
     \begin{columns}
     \centering
     \column{0.5\textwidth}
     \centering
-    \xincludegraphics[width=0.9\textwidth, label=a, labelbox]{./TextureMapsImages/BM_46_LEFT_0_crop.png}\\
-    \xincludegraphics[width=0.9\textwidth, label=c, labelbox]{./TextureMapsImages/BM_46_LEFT_2_crop.png}
+    \xincludegraphics[width=0.9\textwidth]{./TextureMapsImages/BM_46_LEFT_grayscale.png}\\
+    \vspace{0.3mm}
+    \xincludegraphics[width=0.9\textwidth, label=b, labelbox]{./TextureMapsImages/BM_46_LEFT_1_crop.png}\\
+    \vspace{0.3mm}
+    \xincludegraphics[width=0.9\textwidth, label=d, labelbox]{./TextureMapsImages/BM_46_LEFT_3_crop.png}
     \column{0.5\textwidth}
     \centering
-    \xincludegraphics[width=0.9\textwidth, label=b, labelbox]{./TextureMapsImages/BM_46_LEFT_1_crop.png}\\
-    \xincludegraphics[width=0.9\textwidth, label=d, labelbox]{./TextureMapsImages/BM_46_LEFT_3_crop.png}
+    \xincludegraphics[width=0.9\textwidth, label=a, labelbox]{./TextureMapsImages/BM_46_LEFT_0_crop.png}\\
+    \vspace{0.3mm}
+    \xincludegraphics[width=0.9\textwidth, label=c, labelbox]{./TextureMapsImages/BM_46_LEFT_2_crop.png}\\
+    \vspace{0.3mm}
+    \xincludegraphics[width=0.9\textwidth, label=e, labelbox]{./TextureMapsImages/BM_46_LEFT_4_crop.png}
     \end{columns}
   \end{columns}
 \end{frame}

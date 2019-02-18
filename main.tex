@@ -222,13 +222,18 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
 \section{Methods}
 
 \begin{frame}[fragile]{Quantitative Methods}
-  \begin{itemize} \itemsep2em
-    \item Texture Analysis: GLCM and GLRLM
-
-    \item Bone Morphometry
-
-    \item Shape Analysis: Iterative Closest Points (ICP)
-  \end{itemize}
+  \begin{columns}
+    \column{0.55\textwidth}
+    \centering
+    \begin{itemize} \itemsep2em
+      \item Texture Analysis: GLCM and GLRLM
+      \item Bone Morphometry
+      \item Shape Analysis: Iterative Closest Points (ICP)
+    \end{itemize}
+    \column{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{./logos/logo_ITK.png}
+  \end{columns}
 \end{frame}
 
 \begin{frame}[fragile]{Texture Analysis}
@@ -356,6 +361,19 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
     \xincludegraphics[width=0.9\textwidth, label=e, labelbox]{./TextureMapsImages/BM_46_LEFT_4_crop.png}
     \end{columns}
   \end{columns}
+  \note{
+    \begin{itemize}
+      \item Bv/Tv stands for Bone Volume over Total Volume.
+      \item Bs/Tv stands for Bone Surface over Bone Volume.
+    \end{itemize}
+    The computation of those features is based on:
+    \begin{itemize}
+      \item Ntotal is the total number of voxels in the volume of interest.
+      \item Nbone represents the number of voxels in the bone area.
+      \item Nboundary is the number of voxels that are part of the bone/non-bone boundary in the volume of interest
+    \end{itemize}
+    In order to obtain those numbers, a segmentation of the image highlighting the bone is needed (can be done thanks to a simple threshold)
+  }
 \end{frame}
 
 \begin{frame}{Shape Analysis}

@@ -6,7 +6,7 @@
 % https://tex.stackexchange.com/questions/11708/run-macro-on-each-frame-in-beamer
 % \setbeameroption{hide notes} % Only slides (default)
 % \setbeameroption{show only notes} % Only notes
-% \setbeameroption{show notes on second screen=right} % Both
+%\setbeameroption{show notes on second screen=right} % Both
 \makeatletter
 \def\beamer@framenotesbegin{% at beginning of slide
   \gdef\beamer@noteitems{}%
@@ -40,8 +40,11 @@
 \input{xincludegraphics.tex}
 \hypersetup{
 colorlinks, urlcolor=blue, linkcolor={blue!10!black},
-%citecolor={blue!50!black}
+citecolor={blue!50!black}
 }
+%\usepackage[style=authortitle,backend=bibtex]{biblatex}
+\usepackage[backend=biber,bibencoding=utf8,style=verbose-inote,citestyle=authortitle]{biblatex}
+\addbibresource{references.bib}
 %
 % metropolis theme: https://github.com/matze/mtheme
 %
@@ -139,7 +142,7 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
 
 \item Our goal is to present open source software tools to quantify musculoskeletal diseases through imaging.
 
-\item These methods are tested on mouse femur wound model images obtained during a hemophilia study.
+\item These methods are tested on a pilot dataset of femurs scans obtained from a hemophilia-induced mouse models.
 \end{itemize}
 
 \note{
@@ -165,9 +168,9 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
     \centering
     \begin{itemize} \itemsep1em
         \item Three, 22 week old (skeletally mature), genetically modified, male mice.
+        \item Right limb is healthy (control) and left limb has an induced wound.
         \item F8 gene knockout preventing the generation of protein coagulation factor VIII.
         \item Pathogenic pathway similar to hemophilia, presenting bleeding induced bone and joint damage.
-        \item Images of right (control) and left (wounded) limbs
     \end{itemize}
 \end{columns}
 \note{
@@ -237,23 +240,29 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
 \end{frame}
 
 \begin{frame}[fragile]{Texture Analysis}
-  We investigated two different types of textural features related to different aspects of the bone architecture:
+  \noindent We investigated two different types of textural features related to different aspects of the bone architecture:
   \vspace{0.1cm}
   % \metroset{block=fill}
+  \begin{columns}
+  \column{0.5\textwidth}
+  \centering
   \begin{exampleblock}{Co-occurrence based-features:}
     \begin{itemize} \itemsep0.8em
-      \item Haralick et al. 1973 \cite{Haralick1973}
+      \item \cite{Haralick1973} [1973]
       \item Local neighborhoods and connectivities
       \item Grey Level Co-occurrence Matrix (GLCM)
     \end{itemize}
   \end{exampleblock}
+  \column{0.5\textwidth}
+  \centering
   \begin{exampleblock}{Run-length based-features:}
     \begin{itemize} \itemsep0.8em
-      \item Galloway et al. 1975 \cite{Galloway1975}
+      \item \cite{Galloway1975} [1975]
       \item Grey-level clusters
       \item Grey Level Run-Length Matrix (GLRLM)
     \end{itemize}
   \end{exampleblock}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{Texture Analysis: Co-occurrence Matrix (GLCM)}
@@ -262,17 +271,18 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
     Eight co-occurrence based-features:\\
     \begin{itemize} \itemsep0.5em
       \item Energy
-      \item \textbf{a}) Entropy
-      \item \textbf{b}) Correlation
-      \item \textbf{c}) Inverse Difference Moment (IDM)
-      \item \textbf{d}) Inertia
+      \item Entropy \textbf{[a]} 
+      \item Correlation \textbf{[b]}
+      \item Inverse Difference Moment (IDM) \textbf{[c]} 
+      \item Inertia \textbf{[d]}
       \item Cluster shade
       \item Cluster prominence
-      \item \textbf{e}) Haralick’s correlation
+      \item Haralick’s correlation \textbf{[e]}
     \end{itemize}
     \column{0.4\textwidth}
     \begin{columns}
       \centering
+      %\includegraphics[width=0.3\textwidth]{./Figures/hot_to_cold.png}\\
       \column{0.5\textwidth}
       \centering
       % \xincludegraphics[width=0.8\textwidth, label=a, labelbox]{./TextureMapsImages/GLCM_46_left_0_energy.png}\\
@@ -297,11 +307,11 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
     \column{0.6\textwidth}
     Ten run-length based-features:
     \begin{itemize}
-       \item \textbf{a}) Short run emphasis (SRE) 
-       \item \textbf{b}) Long run emphasis (LRE) 
-       \item \textbf{c}) Grey level non-uniformity (GLN) 
-       \item \textbf{d}) Run length non-uniformity (RLN) 
-       \item \textbf{e}) Low grey level run emphasis (LGRE)
+       \item Short run emphasis (SRE) \textbf{[a]}
+       \item Long run emphasis (LRE) \textbf{[b]}
+       \item Grey level non-uniformity (GLN) \textbf{[c]}
+       \item Run length non-uniformity (RLN) \textbf{[d]}
+       \item Low grey level run emphasis (LGRE) \textbf{[e]}
        \item High grey level run emphasis (HGRE)
        \item Short run low grey level emphasis (SRLGE)
        \item Short run high grey level emphasis (SRHGE)
@@ -336,11 +346,11 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
     Bone morphometry features describe the 3D shape of subchondral bone trabecular structure.\newline
     Five bone morphometry features:
     \begin{itemize} \itemsep0.5em
-      \item \textbf{a}) Bone volume density (Bv/Tv)
-      \item \textbf{b}) Bone surface density (Bs/Bv)
-      \item \textbf{c}) Trabecular thickness (Tb.Th)
-      \item \textbf{d}) Trabecular separation (Tb.Sp)
-      \item \textbf{e}) Trabecular number (Tb.N)
+      \item Bone volume density (Bv/Tv) \textbf{[a]}
+      \item Bone surface density (Bs/Bv) \textbf{[b]} 
+      \item Trabecular thickness (Tb.Th) \textbf{[c]} 
+      \item Trabecular separation (Tb.Sp) \textbf{[d]} 
+      \item Trabecular number (Tb.N) \textbf{[e]} 
     \end{itemize}
     \column{0.4\textwidth}
     \begin{columns}
@@ -375,6 +385,22 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
     In order to obtain those numbers, a segmentation of the image highlighting the bone is needed (can be done thanks to a simple threshold)
   }
 \end{frame}
+
+{
+\setbeamercolor{background canvas}{bg=kitwarewhite}
+\begin{frame}{Texture Rendering}
+  \begin{center}
+  \includegraphics[width=0.6\textwidth]{./figures/FigureRunLengthNonUniformity_withVolume}\\
+  \end{center}
+  \vspace{0.1cm}
+  \centering
+  \note{
+  Run-length non-uniformity texture map.
+a) right (unaffected) femur, b) left (injured) femur.\\
+First column: microCT slice intensity. Second column: corresponding texture map (note that texture is computed on the 3D image, and that texture values in purple clearly identify injury-induced mass.).\\
+Third column: texture image rendering.}
+\end{frame}
+}
 
 \begin{frame}{Shape Analysis}
   \begin{center}
@@ -466,7 +492,8 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
     \end{block}
     \column{0.20\textwidth}
     \centering
-    \includegraphics[width=0.9\textwidth]{./logos/logo_slicer_horizontal.png}
+    \includegraphics[width=0.65\textwidth]{./logos/logo_slicer_horizontal.png}\hspace{0.1mm}
+    \includegraphics[width=0.3\textwidth]{./logos/logo_BoneTexture.png}
   \end{columns}
   \note{
     All the results presented here were computed with newly developed tools:
@@ -490,7 +517,7 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
 \setbeamercolor{background canvas}{bg=kitwarewhite}
 \begin{frame}{Medical Computing}
     \centering
-    \includegraphics[height=0.9\textheight]{./logos/kitware_medical.png}
+    \includegraphics[width=0.9\textwidth]{./logos/kitware_medical_HQ.png}
 \end{frame}
 }
 
@@ -521,8 +548,9 @@ colorlinks, urlcolor=blue, linkcolor={blue!10!black},
 
 \begin{frame}[allowframebreaks]{References}
 
-  \bibliography{references}
-  \bibliographystyle{abbrv}
+  %\bibliography{references}
+  %\bibliographystyle{abbrv}
+  \printbibliography
 
 \end{frame}
 

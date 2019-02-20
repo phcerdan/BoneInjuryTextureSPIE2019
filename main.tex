@@ -79,7 +79,7 @@ citecolor={blue!50!black}
   \end{beamercolorbox}%
 }
 % At the logo on top of the footline.
-\addtobeamertemplate{footline}{\hfill\includegraphics[height=0.45cm]{klogo_new_crop}\hspace*{0.5em}\par}{}
+\addtobeamertemplate{footline}{\hfill\includegraphics[height=0.45cm]{Kitware_Logo}\hspace*{0.5em}\par\vspace{0.1mm}}{}
 %\setbeamertemplate{frame footer}{\includegraphics[width=.1\textwidth]{klogo_new_crop}}
 
 
@@ -92,7 +92,7 @@ citecolor={blue!50!black}
 \titlegraphic{
 \begin{tikzpicture}[overlay, remember picture]
 \node[at=(current page.south), anchor=south] {%
-\includegraphics[width=.3\textwidth]{klogo}\hspace{2cm} \includegraphics[width=.3\textwidth]{unclogo}
+\includegraphics[width=.3\textwidth]{Kitware_Logo}\hspace{2cm} \includegraphics[width=.3\textwidth]{unclogo}
 };
 \end{tikzpicture}
 }
@@ -112,7 +112,7 @@ citecolor={blue!50!black}
 \begin{frame}
   \begin{columns}[onlytextwidth]
   \column{0.5\textwidth}
-    \includegraphics[width=0.9\textwidth]{./logos/klogo.png}\\
+    \includegraphics[width=0.9\textwidth]{./logos/Kitware_Logo.png}\\
     \vspace{0.1cm}
     % \metroset{block=fill}
     \begin{block}{\color{kitwareblue} Collaborative Software R\&D}
@@ -133,6 +133,14 @@ citecolor={blue!50!black}
 
   \note[item]{Intro Kitware:}
 \end{frame}
+
+{
+\setbeamercolor{background canvas}{bg=kitwarewhite}
+\begin{frame}{Medical Computing}
+    \centering
+    \includegraphics[width=0.9\textwidth]{./logos/kitware_medical_HQ.png}
+\end{frame}
+}
 
 \begin{frame}[fragile]{Introduction}
 \begin{itemize} \itemsep1em
@@ -462,9 +470,10 @@ Third column: texture image rendering.}
     \column{0.80\textwidth}
     \metroset{block=fill}
     \begin{block}{All analysis filters were implemented as part of \textbf{ITK}, the Insight Toolkit:}
-    \begin{itemize} \itemsep1.0em
+    \begin{itemize} \itemsep0.7em
       \item High performance, greatly reducing computational time in texture analysis.
       \item Able to compute 3D maps of multidimensional features
+      \item[] \includegraphics[width=4mm]{./logos/logo_github.png}\hspace{0.2cm} \href{https://github.com/InsightSoftwareConsortium/ITK}{InsightSoftwareConsortium/ITK}
     \end{itemize}
   \end{block}
     \column{0.20\textwidth}
@@ -478,7 +487,7 @@ Third column: texture image rendering.}
     \begin{block}{\textbf{Python} packages available for Windows, Mac and Linux}
     % \noindent \textbf{Python} packages available for Windows, Mac and Linux
       \centering
-      pip install itk-texturefeatures itk-bonemorphometry
+      pip install \href{https://github.com/InsightSoftwareConsortium/ITKTextureFeatures}{itk-texturefeatures} \href{https://github.com/InsightSoftwareConsortium/ITKBoneMorphometry}{itk-bonemorphometry}
   \end{block}
     \column{0.20\textwidth}
     \centering
@@ -488,7 +497,7 @@ Third column: texture image rendering.}
   \begin{columns}[onlytextwidth]
     \column{0.80\textwidth}
     \metroset{block=fill}
-    \begin{block}{Graphical interface in 3DSlicer: Bone Texture Extension}
+    \begin{block}{Graphical interface in 3DSlicer: \href{https://github.com/Kitware/BoneTextureExtension}{Bone Texture Extension}}
     \end{block}
     \column{0.20\textwidth}
     \centering
@@ -513,13 +522,6 @@ Third column: texture image rendering.}
   }
 \end{frame}
 
-{
-\setbeamercolor{background canvas}{bg=kitwarewhite}
-\begin{frame}{Medical Computing}
-    \centering
-    \includegraphics[width=0.9\textwidth]{./logos/kitware_medical_HQ.png}
-\end{frame}
-}
 
 \begin{frame}[standout]
   \centering
